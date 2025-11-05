@@ -10,5 +10,6 @@ RUN mvn package -DskipTests
 FROM public.ecr.aws/docker/library/openjdk:17-jdk-slim
 WORKDIR /java-app
 COPY --from=builder /java-app/target/demo-1.0.0.jar java-app.jar
+
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "java-app.jar"]
